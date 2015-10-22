@@ -125,8 +125,8 @@ void draw(){
     fill(255,0,0);
     stroke(255,0,0);
     image(hp,2,5);
-    if(hpLong >= 200){
-    hpLong = 200;}
+    if(hpLong >= 210){
+    hpLong = 210;}
     
     //enemy
     enemyX = enemyX + enemySpeed;
