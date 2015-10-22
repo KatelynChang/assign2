@@ -7,7 +7,7 @@ int bg1X, bg2X, bg3X;
 
 //fighter
 float fighterX, fighterY;
-float fighterSpeed = 5;
+float fighterSpeed = random(0,5);
 
 //fightermove
 boolean upPressed = false;
@@ -19,8 +19,8 @@ boolean rightPressed = false;
 int hpLong;
 
 //enemy
-int enemyX;
-int enemySpeed;
+float enemyX, enemyY;
+float enemySpeed;
 
 //treasure
 int treasureX, treasureY;
@@ -56,6 +56,8 @@ void setup(){
   hpLong = 50;
   
   //enemy
+  enemyX = 0;
+  enemyY = 100;
   enemySpeed = 5;
   
   //treasure
@@ -125,12 +127,16 @@ void draw(){
     image(hp,2,5);
     
     //enemy
-    enemyX = enemyX+enemySpeed;
+    enemyX = enemyX + enemySpeed;
+    if(fighterY > enemyY){
+    enemyY += enemySpeed;}
+    else if(fighterY < enemyY){
+    enemyY -= enemySpeed;}
     enemyX %= 640;
-    image(enemy1,enemyX,100);
-    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= 100 && fighterY <= 161 ){
+    image(enemy1,enemyX, enemyY);
+    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= enemyY && fighterY <= enemyY+61 ){
     hpLong -= 40;}
-    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= 100 && fighterY <= 161){
+    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= enemyY && fighterY <= enemyY+61){
     enemyX = 0;}
    
     
