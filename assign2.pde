@@ -7,7 +7,7 @@ int bg1X, bg2X, bg3X;
 
 //fighter
 float fighterX, fighterY;
-float fighterSpeed = random(0,5);
+float fighterSpeed = 5;
 
 //fightermove
 boolean upPressed = false;
@@ -129,12 +129,14 @@ void draw(){
     //enemy
     enemyX = enemyX + enemySpeed;
     if(fighterY > enemyY){
-    enemyY += enemySpeed;}
+    enemyY += 1;}
     else if(fighterY < enemyY){
-    enemyY -= enemySpeed;}
+    enemyY -= 1;}
     enemyX %= 640;
     image(enemy1,enemyX, enemyY);
-    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= enemyY && fighterY <= enemyY+61 ){
+    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= enemyY && fighterY <= enemyY+61){
+    hpLong -= 40;}
+    else if(fighterX+51 >= enemyX && fighterX+51 <= enemyX+61 && fighterY+51 >= enemyY && fighterY+51 <= enemyY+61){
     hpLong -= 40;}
     if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= enemyY && fighterY <= enemyY+61){
     enemyX = 0;}
