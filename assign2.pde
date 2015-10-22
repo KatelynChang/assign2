@@ -53,14 +53,14 @@ void setup(){
   fighterY = 240;
   
   //hp
-  hpLong = floor(random(9,211));
+  hpLong = 50;
   
   //enemy
   enemySpeed = 5;
   
   //treasure
-  treasureX = floor(random(640));
-  treasureY = floor(random(480));
+  treasureX = floor(random(0,640-41));
+  treasureY = floor(random(0,480-41));
   
   
 }
@@ -119,7 +119,7 @@ void draw(){
     
     //hp
     rectMode(CORNERS);
-    rect(hpLong,9,210,25);
+    rect(10,9,hpLong,25);
     fill(255,0,0);
     stroke(255,0,0);
     image(hp,2,5);
@@ -128,12 +128,21 @@ void draw(){
     enemyX = enemyX+enemySpeed;
     enemyX %= 640;
     image(enemy1,enemyX,100);
+    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= 100 && fighterY <= 161 ){
+    hpLong -= 40;}
+    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= 100 && fighterY <= 161){
+    enemyX = 0;}
+   
     
     //treasure
     image(treasure, treasureX, treasureY);
+    if(fighterX >= treasureX && fighterX <= treasureX+41 && fighterY >= treasureY && fighterY <= treasureY+41){
+    hpLong += 20;}
+    if(fighterX >= treasureX && fighterX <= treasureX+41 && fighterY >= treasureY && fighterY <= treasureY+41){
+     treasureX = floor(random(0,640-41)); treasureY = floor(random(0,480-41));}
     
     //die
-    if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= 100 && fighterY <= 161 ){
+    if(hpLong <= 10){
     gameState = GAME_OVER;}
     
     break;
@@ -142,7 +151,7 @@ void draw(){
     image(end1,0,0);
     if (mouseX >= 204 && mouseX < 434 && mouseY >= 306 && mouseY <= 350){
       if(mousePressed){
-      gameState = GAME_RUN; fighterX = 580 ; fighterY = 240;}
+      gameState = GAME_RUN; fighterX = 580 ; fighterY = 240; hpLong = 50;}
     }
     else{image(end2,0,0);}
     break;
