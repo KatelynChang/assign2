@@ -140,14 +140,20 @@ void draw(){
     hpLong -= 40;}
     if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= enemyY && fighterY <= enemyY+61){
     enemyX = 0;}
+    else if(fighterX+51 >= enemyX && fighterX+51 <= enemyX+61 && fighterY+51 >= enemyY && fighterY+51 <= enemyY+61){
+    enemyX =0;}
    
     
     //treasure
     image(treasure, treasureX, treasureY);
     if(fighterX >= treasureX && fighterX <= treasureX+41 && fighterY >= treasureY && fighterY <= treasureY+41){
     hpLong += 20;}
+    else if(fighterX+51 >= treasureX && fighterX+51 <= treasureX+41 && fighterY+51 >= treasureY && fighterY+51 <= treasureY+41){
+    hpLong += 20;}
     if(fighterX >= treasureX && fighterX <= treasureX+41 && fighterY >= treasureY && fighterY <= treasureY+41){
      treasureX = floor(random(0,640-41)); treasureY = floor(random(0,480-41));}
+    else if(fighterX+51 >= treasureX && fighterX+51 <= treasureX+41 && fighterY+51 >= treasureY && fighterY+51 <= treasureY+41){
+    treasureX = floor(random(0,640-41)); treasureY = floor(random(0,480-41));}
     
     //die
     if(hpLong <= 10){
