@@ -1,4 +1,5 @@
 PImage bg1, bg2, end1, end2, enemy1, fighter, hp, start1, start2, treasure;
+PImage bg1, bg2, end1, end2, enemy1, fighter, hp, start1, start2, treasure;
 final int GAME_START=1, GAME_RUN=2, GAME_OVER=3;  
 int gameState;
 
@@ -140,9 +141,13 @@ void draw(){
     hpLong -= 40;}
     else if(fighterX+51 >= enemyX && fighterX+51 <= enemyX+61 && fighterY+51 >= enemyY && fighterY+51 <= enemyY+61){
     hpLong -= 40;}
+    else if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY+51 >= enemyY && fighterY+51 <= enemyY+61){
+    hpLong -= 40;}
     if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY >= enemyY && fighterY <= enemyY+61){
     enemyX = 0;}
     else if(fighterX+51 >= enemyX && fighterX+51 <= enemyX+61 && fighterY+51 >= enemyY && fighterY+51 <= enemyY+61){
+    enemyX =0;}
+    else if(fighterX >= enemyX && fighterX <= enemyX+61 && fighterY+51 >= enemyY && fighterY+51 <= enemyY+61){
     enemyX =0;}
    
     
@@ -152,9 +157,13 @@ void draw(){
     hpLong += 20;}
     else if(fighterX+51 >= treasureX && fighterX+51 <= treasureX+41 && fighterY+51 >= treasureY && fighterY+51 <= treasureY+41){
     hpLong += 20;}
+    else if(fighterX >= treasureX && fighterX <= treasureX+41 && fighterY+51 >= treasureY && fighterY+51 <= treasureY+41){
+    hpLong += 20;}
     if(fighterX >= treasureX && fighterX <= treasureX+41 && fighterY >= treasureY && fighterY <= treasureY+41){
      treasureX = floor(random(0,640-41)); treasureY = floor(random(0,480-41));}
     else if(fighterX+51 >= treasureX && fighterX+51 <= treasureX+41 && fighterY+51 >= treasureY && fighterY+51 <= treasureY+41){
+    treasureX = floor(random(0,640-41)); treasureY = floor(random(0,480-41));}
+    else if(fighterX >= treasureX && fighterX <= treasureX+41 && fighterY+51 >= treasureY && fighterY+51 <= treasureY+41){
     treasureX = floor(random(0,640-41)); treasureY = floor(random(0,480-41));}
     
     //die
